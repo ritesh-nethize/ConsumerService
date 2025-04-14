@@ -21,7 +21,7 @@ try
         {
             services.AddDbContext<PostDbContext>(options =>
                 options.UseSqlServer("Server=localhost;Database=PostDb;Trusted_Connection=True;TrustServerCertificate=True;"));
-
+            services.AddSingleton<IKafkaConsumer, KafkaConsumer>();
             services.AddHostedService<PostConsumerWorker>();
         });
 
